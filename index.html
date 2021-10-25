@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Agustin Ignacio Lobo">
+    <meta name="Description" content="Pagina de presupuestos">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Pagina de Presupuestos</title>
+</head>
+<body onload="cargarApp()">
+    <div class="cabecero" >
+        <div class="presupuesto">
+
+            <!--Titulo de pagina-->
+            <div class="presupuesto_titulo">
+                Presupuesto Disponible:
+            </div>
+
+            <!--Bloque de valor-->
+            <div class="presupuesto_valor" id="presupuesto">+ 2,000.00</div>
+
+            <!--Muestra ingresos totales-->
+            <div class="presupuesto_ingreso limpiarEstilos">
+                <div class="presupuesto_ingreso--texto">Ingresos</div>
+                <div class="derecha">
+                    <div class="presupuesto_ingreso--valor" id="ingresos">+4,000.00</div>
+                    <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
+                </div>
+            </div>
+
+            <!--Muestra egresos totales-->
+            <div class="presupuesto_egreso limpiarEstilos">
+                <div class="presupuesto_egreso--texto">Egresos</div>
+                <div class="derecha">
+                    <div class="presupuesto_egreso--valor" id="egresos">-2,000.00</div>
+                    <div class="presupuesto_egreso--porcentaje" id="porcentaje">45%;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Formulario para agregar un ingreso o egreso-->
+    <form id="forma" onsubmit="return false;">
+        <div class="agregar">
+            <div class="agregar_contenedor">
+                <select name="Agregar un tipo" class="agregar_tipo" id="tipo">
+                    <option value="ingreso" selected>+</option>
+                    <option value="egreso">-</opti  on>
+                </select>
+                <input type="text" placeholder="Agregar Descripcion" class="agregar_descripcion" id="descripcion">
+                <input type="number" name="cantidad de ingreso o egreso" id="valor" class="agregar_valor" placeholder="valor" step="any">
+                <button class="agregar_btn" onclick="agregaDato()">
+                    <ion-icon name="add-circle"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!--Muestra historial de los ingresos y egresos realizados-->
+    <div class="contenedor limpiarEstilos">
+        <!-- Historial Ingresos-->
+        <div class="ingreso">
+            <h2 class="ingreso_titulo">Ingreso:</h2>
+            <div id="lista_ingresos">
+                <!--Codigo que ya no sirve ya que se crea en la funcion crearIngresoHTML en app.js-->
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Aqui va un ejemplo</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">550</div>
+                        <div class="elemento_eliminar">
+                            <button class="elemento_eliminar--btn">
+                                <ion-icon name="trash-outline" onclick="eliminarIngreso()"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                 <!---->
+            </div>
+        </div>
+
+        <!--Historial Egresos-->
+        <div class="egreso">
+            <h2 class="egreso_titulo">Egreso:</h2>
+            <div id="lista_egresos">
+                <!--Codigo que ya no sirve ya que se crea en la funcion crearEgresoHTML en app.js-->
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Pago de deudas</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">- 23540</div>
+                        <div class="elemento_porcentaje">21%</div>
+                        <div class="elemento_eliminar">
+                            <button class="elemento_eliminar--btn">
+                                <ion-icon name="trash-outline" onclick="eliminarEgreso()"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/Dato.js"></script>
+    <script src="js/Ingreso.js"></script>
+    <script src="js/Egreso.js"></script>
+    <script src="js/app.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</body>
+</html>
